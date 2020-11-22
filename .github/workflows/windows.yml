@@ -34,7 +34,7 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1
 
     - name: Hack wireguard build
-      run: git config --global url."ssh://git@golang.zx2c4.com".insteadOf "https://git.golang.zx2c4.com"
+      run: git config --global url."ssh://git@git.zx2c4.com".insteadOf "https://git.zx2c4.com"
 
     - name: Run build
       run: desktop-app-ui\Windows\References\Installer\build.bat
@@ -42,5 +42,5 @@ jobs:
     # - name: Upload build artifacts
     #   uses: actions/upload-artifact@v2
     #   with:
-    #     name: MSIX Package
-    #     path: ${{ env.Wap_Project_Directory }}\AppPackages
+    #     name: Installer
+    #     path: desktop-app-ui\Windows\References\bin
