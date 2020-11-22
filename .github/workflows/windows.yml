@@ -31,6 +31,8 @@ jobs:
       with:
         go-version: '^1.13.1'
 
+    - uses: ilammy/msvc-dev-cmd@v1
+
     - name: Run build
       run: desktop-app-ui\Windows\References\Installer\build.bat
 
