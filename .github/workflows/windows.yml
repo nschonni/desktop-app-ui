@@ -1,0 +1,41 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout desktop-app-ui
+      uses: actions/checkout@v2
+      with:
+        path: desktop-app-ui
+
+    - name: Checkout desktop-app-daemon
+      uses: actions/checkout@v2
+      with:
+        repository: ivpn/desktop-app-daemon
+        path: desktop-app-daemon
+
+    - name: Checkout desktop-app-cli
+      uses: actions/checkout@v2
+      with:
+        repository: ivpn/desktop-app-cli
+        path: desktop-app-cli
+
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '^1.13.1'
+
+    - name: Run build
+      run: desktop-app-ui\Windows\References\Installer\build.bat
+
+    # - name: Upload build artifacts
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: MSIX Package
+    #     path: ${{ env.Wap_Project_Directory }}\AppPackages
